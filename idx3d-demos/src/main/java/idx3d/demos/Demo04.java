@@ -11,20 +11,17 @@ public final class Demo04 extends idx3d_DemoPanel {
 
     @Override
     protected void prepareScene() {
-        idx3d_Texture bkgrd = idx3d_TextureFactory.blendTopDown(
-                idx3d_TextureFactory.CHECKERBOARD(scene.width, scene.height, 4, 0x000000, 0x999999),
-                idx3d_Resources.texture("textures/idxbkgrd.jpg"));
-        scene.environment.setBackground(bkgrd);
 
         idx3d_Texture envmap = idx3d_Resources.texture("textures/skymap.jpg");
-        idx3d_Texture texture = idx3d_Resources.texture("textures/texture.jpg");
+        idx3d_Texture texture = idx3d_Resources.texture("textures/spectrum.jpg");
 
-        idx3d_Material mode1 = new idx3d_Material(0x0066FF);
+        idx3d_Material mode1 = new idx3d_Material(0xCC5511);
+        mode1.setWireframe(true);
         mode1.setFlat(true);
+        mode1.setTransparency(150);
 
-        idx3d_Material mode2 = new idx3d_Material(0x330099);
-        mode2.setEnvmap(envmap);
-        mode2.setReflectivity(63);
+        idx3d_Material mode2 = new idx3d_Material(0xCC5511);
+        mode2.setFlat(true);
 
         idx3d_Material mode3 = new idx3d_Material();
         mode3.setEnvmap(envmap);
@@ -58,7 +55,7 @@ public final class Demo04 extends idx3d_DemoPanel {
         scene.environment.ambient = 0x554433;
         scene.defaultCamera.setFov(120f);
 
-        scene.addObject("Torusknot", idx3d_ObjectFactory.TORUSKNOT(5f, 1f, 0.28f, 1.2f, 0.48f, 0.8f, 88, 9));
+        scene.addObject("Torusknot", idx3d_ObjectFactory.TORUSKNOT(5f, 1f, 0.28f, 1.2f, 0.48f, 0.8f, 200, 20));
         scene.object("Torusknot").rotate(0.2f, 3.5f, -0.5f);
         scene.object("Torusknot").setMaterial(scene.material("Mode6"));
         scene.object("Torusknot").scale(0.72f);

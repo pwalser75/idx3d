@@ -31,6 +31,10 @@ public final class Demo03 extends idx3d_DemoPanel {
             scene.object("Wobble2").setMaterial(scene.material("Stone3"));
             scene.object("Wobble3").setMaterial(scene.material("Stone4"));
             scene.normalize();
+
+            for (int i = 0; i < scene.objects; i++) {
+                idx3d_Toolkit.meshSmooth(scene.object[i]);
+            }
         } catch (Exception e) {
             System.out.println(e + "");
         }

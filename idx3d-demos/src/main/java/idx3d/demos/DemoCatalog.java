@@ -51,16 +51,16 @@ public final class DemoCatalog {
     static {
         List<DemoInfo> demos = new ArrayList<>();
         demos.add(new DemoInfo("demo1", "Torus & Wineglass",
-                "Torus and wineglass of revolution.",
+                "Press 1 for wireframe, 2 for flatshading, 3 for phong shading, 4 for textured phong shading. Subdivide mesh by pressing 'm'",
                 Demo01::new));
         demos.add(new DemoInfo("demo2", "Terrain",
                 "Animated heightfield terrain.",
                 Demo02::new));
         demos.add(new DemoInfo("stones", "Stones",
-                "Four wobbling meshes, stone shaded.",
+                "Stones with different textures",
                 Demo03::new));
         demos.add(new DemoInfo("demo4", "Torus Knot",
-                "Torus knot, seven material modes.",
+                "Torus knot, seven material modes (press 1-7 to switch)",
                 Demo04::new));
         demos.add(new DemoInfo("demo6", "Lens Flare",
                 "Chrome mesh with a lens flare.",

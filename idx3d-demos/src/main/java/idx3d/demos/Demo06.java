@@ -27,6 +27,10 @@ public final class Demo06 extends idx3d_DemoPanel {
             }
 
             scene.normalize();
+
+            for (int i = 0; i < scene.objects; i++) {
+                idx3d_Toolkit.meshSmooth(scene.object[i]);
+            }
         } catch (Exception e) {
             System.out.println(e + "");
         }
@@ -60,11 +64,6 @@ public final class Demo06 extends idx3d_DemoPanel {
         }
         if (key == '3') {
             lensFlare.preset3();
-            return;
-        }
-        if (key == 'l') {
-            useLensFlare = !useLensFlare;
-            plugin = useLensFlare ? lensFlare : null;
             return;
         }
     }

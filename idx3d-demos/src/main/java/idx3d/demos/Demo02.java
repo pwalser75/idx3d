@@ -24,7 +24,7 @@ public final class Demo02 extends idx3d_DemoPanel {
         scene.addObject("Field", idx3d_ObjectFactory.HEIGHTFIELD(heightMap, 0.4f, true));
 
         scene.object("Field").setMaterial(scene.material("Material1"));
-        scene.object("Field").scale(0.88f);
+        scene.object("Field").scale(1.5f);
         scene.defaultCamera.setFov(120);
     }
 
@@ -33,7 +33,8 @@ public final class Demo02 extends idx3d_DemoPanel {
         if (autorotation) {
             float dx = (float) Math.sin((float) animationTime()) / 20;
             float dy = (float) Math.cos((float) animationTime()) / 20;
-            scene.object("Field").rotate(speed * dx, speed * dy, speed * -0.04f);
+            //scene.object("Field").rotate(speed * dx, speed * dy, speed * -0.04f);
+            scene.object("Field").rotate(0,0,speed * -0.04f);
         }
     }
 

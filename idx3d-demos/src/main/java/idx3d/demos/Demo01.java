@@ -52,7 +52,7 @@ public final class Demo01 extends idx3d_DemoPanel {
         path[7] = new idx3d_Vector(0.6f, -0.3f, 0);
         path[8] = new idx3d_Vector(0.4f, 0.0f, 0);
 
-        scene.addObject("Torus", idx3d_ObjectFactory.ROTATIONOBJECT(path, 20));
+        scene.addObject("Torus", idx3d_ObjectFactory.ROTATIONOBJECT(path, 40));
         scene.object("Torus").rotate(4.2f, 0.2f, -0.5f);
         scene.object("Torus").shift(-0.5f, 0f, 0f);
         scene.object("Torus").scale(0.72f);
@@ -75,7 +75,7 @@ public final class Demo01 extends idx3d_DemoPanel {
         path[13] = new idx3d_Vector(0.4f, -0.6f, 0);
         path[14] = new idx3d_Vector(0.0f, -0.6f, 0);
 
-        scene.addObject("Wineglass", idx3d_ObjectFactory.ROTATIONOBJECT(path, 16));
+        scene.addObject("Wineglass", idx3d_ObjectFactory.ROTATIONOBJECT(path, 40));
         scene.object("Wineglass").rotate(0.5f, 0f, 0f);
         scene.object("Wineglass").setMaterial(scene.material("Crystal"));
         scene.object("Wineglass").removeDuplicateVertices();

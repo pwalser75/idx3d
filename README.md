@@ -1,8 +1,10 @@
 # idx3d III
 
-**idx3d III** is one of the first pure-Java software 3D engines, originally written by
+**idx3d III** was one of the first Java realtime 3D engines, originally written by
 Peter Walser in 1999/2000. It renders everything in software (no OpenGL, no external
 dependencies) and shipped with a set of demos that ran as Java Applets.
+
+![idx3d launcher](docs/screenshot01.jpg) ![idx3d launcher](docs/screenshot02.jpg) ![idx3d launcher](docs/screenshot03.jpg) ![idx3d launcher](docs/screenshot04.jpg)
 
 This repository is a modernization of the original source:
 
@@ -10,14 +12,46 @@ This repository is a modernization of the original source:
 - the Applet front-end replaced with **Swing** components;
 - the demos collected into a single executable desktop application with a modern dark UI.
 
-![idx3d launcher](docs/screenshot.png)
+![idx3d launcher](docs/screenshot-app.png)
 
-## Running
+## Ported with OpenCode | DeepSeek V4 Flash
+
+This project was ported from the original sources (Java source files, Applets, HTML pages with `<applet>`)
+with **OpenCode** and the **DeepSeek V4 Flash** model.
+
+Total cost: **226,340** tokens, **$0.18** spent.
+
+_Migration prompt:_
+```text
+This folder contains idx3d, one of the first Java 3d engines.
+It consists of a library and several examples which were implemented as Java Applets back in the day.
+
+I want you to do the following:
+- initialize as GIT project
+- set up a Maven build and a README
+- reorganize the code and migrate it to Java 17
+- migrate the Applets to other Swing classes
+
+Eventually I want this project to build an executable Java application (uber jar), which includes all the previous applets, with a split view:
+- left side: allow to chose a demo (on startup, demo1 is selected)
+- right side: run the selected demo
+
+For the GUI, I want to have a very modern, dark tech themed look, with a nice design (work with font sizes and styles and color and proper paddings to make it look very nice).
+
+Work out a plan on how to refactor this, and then start working on it.
+```
+
+## Build / Run
 
 Requirements: **JDK 17+** and **Maven 3.9+**.
 
+**Build** (default goals are `clean package`):
 ```bash
-mvn                # default goals are 'clean package'
+mvn
+```
+
+**Run**:
+```bash
 java -jar idx3d-app/target/idx3d.jar
 ```
 
