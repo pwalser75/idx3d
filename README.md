@@ -50,8 +50,7 @@ summarizes the shared ones.
 idx3d/
 ├── idx3d-core/    the engine: rasterizer, scene graph, math, texture/3DS IO, effects
 ├── idx3d-demos/   the 10 selected demos (Swing components) + their assets
-├── idx3d-app/     the dark-themed launcher and the shaded uber jar
-└── legacy/        the original, unmodified sources and assets kept for reference
+└── idx3d-app/     the dark-themed launcher and the shaded uber jar
 ```
 
 - **`idx3d-core`** — `idx3d_Scene`, `idx3d_RenderPipeline`, `idx3d_Rasterizer`,
@@ -61,7 +60,7 @@ idx3d/
   and `idx3d_Resources` loads assets from the classpath.
 - **`idx3d-demos`** — `Demo01`, `Demo02`, `Demo03` (Stones), `Demo04`, `Demo06`, `Demo07`,
   `Demo08`, `Demo10`, `Demo11` and `Demo12`. `DemoCatalog` is the registry used by the
-  launcher. The remaining original demos are kept unmodified in `legacy/`.
+  launcher.
 - **`idx3d-app`** — `Main`, `MainFrame`, the sidebar/viewport, the dark `Theme`, and the
   Maven Shade configuration that produces the self-contained jar.
 
