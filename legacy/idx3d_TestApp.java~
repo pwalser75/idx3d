@@ -1,0 +1,123 @@
+import java.awt.*;
+import idx3d.*;
+
+public class idx3d_TestApp extends Frame
+{
+	public static void main(String[] args)
+	{
+		new idx3d_TestApp();
+	}
+
+	public idx3d_TestApp()
+	{
+		this.resize(320,240);
+		this.setTitle("idx3d_TestApp");
+		this.move(200,200);
+		this.add(createScene());
+		this.show();
+		this.toFront();
+	}
+	
+	public boolean handleEvent(Event evt)
+	{
+		if (evt.id==Event.WINDOW_DESTROY)
+		{
+			System.exit(0);
+		}
+		return super.handleEvent(evt);
+	}
+	
+	public idx3d_Viewer createScene()
+	{
+		idx3d_Viewer viewer=new idx3d_Viewer();
+		idx3d_Scene scene=viewer.getScene();
+
+		// Create background image 
+			 
+			idx3d_Texture bkgrd=new idx3d_Texture(2,2); 
+			bkgrd.pixel[0]=0xFF; 
+			bkgrd.pixel[1]=0xFF00; 
+			bkgrd.pixel[2]=0xFF0000; 
+			bkgrd.pixel[3]=0xFFFF00; 
+			scene.environment.setBackground(idx3d_TextureFactory.bilinearResample(bkgrd,scene.width,scene.height)); 
+
+		// Add materials
+				
+			idx3d_Material crystal=new idx3d_Material("materials/glass.material");
+			crystal.setReflectivity(255);
+			scene.addMaterial("Crystal",crystal);
+			
+			idx3d_Material plastic=new idx3d_Material(new idx3d_Texture("textures/texture.jpg"));
+			scene.addMaterial("Plastic",plastic);
+			
+			idx3d_Material wireframe=new idx3d_Material(0x000000);
+			wireframe.setWireframe(true);
+			wireframe.setFlat(true);
+			scene.addMaterial("Wireframe",wireframe);
+			
+			idx3d_Material flat=new idx3d_Material(0xFFFFFF);
+			flat.setFlat(true);
+			scene.addMaterial("Flat",flat);
+			
+			idx3d_Material blank=new idx3d_Material(0xFFFFFF);
+			scene.addMaterial("Blank",blank);
+		
+		// Add lights
+		
+			scene.addLight("Light1",new idx3d_Light(new idx3d_Vector(0.4f,0.4f,1f),0x666666,640,120));			
+			scene.addLight("Light2",new idx3d_Light(new idx3d_Vector(-1f,-1f,1f),0x996600,120,40));
+			scene.addLight("Light3",new idx3d_Light(new idx3d_Vector(0.8f,-0.3f,1f),0x336699,240,80));			
+			scene.addLight("Light4",new idx3d_Light(new idx3d_Vector(-0.5f,1f,1f),0x441166,200,80));
+			
+		// Create Torus as a Lattice Object from a circle path
+			
+			idx3d_Vector[] path=new idx3d_Vector[9];
+			
+			path[0]=new idx3d_Vector(0.4f,0.0f,0);
+			path[1]=new idx3d_Vector(0.6f,0.3f,0);
+			path[2]=new idx3d_Vector(0.8f,0.4f,0);
+			path[3]=new idx3d_Vector(0.9f,0.3f,0);
+			path[4]=new idx3d_Vector(1.0f,0.0f,0);
+			path[5]=new idx3d_Vector(0.9f,-0.3f,0);
+			path[6]=new idx3d_Vector(0.8f,-0.4f,0);
+			path[7]=new idx3d_Vector(0.6f,-0.3f,0);
+			path[8]=new idx3d_Vector(0.4f,0.0f,0);
+	
+			scene.addObject("Torus",idx3d_ObjectFactory.ROTATIONOBJECT(path,20));
+			scene.object("Torus").rotate(4.2f,0.2f,-0.5f);
+			scene.object("Torus").shift(-0.5f,0f,0f);
+			scene.object("Torus").scale(0.72f);
+			scene.object("Torus").setMaterial(scene.material("Plastic"));
+			
+		// Create Wineglass as a Lattice Object
+		
+			path=new idx3d_Vector[15];
+			path[0]=new idx3d_Vector(0.0f,0.2f,0);
+			path[1]=new idx3d_Vector(0.13f,0.25f,0);
+			path[2]=new idx3d_Vector(0.33f,0.3f,0);
+			path[3]=new idx3d_Vector(0.43f,0.6f,0);
+			path[4]=new idx3d_Vector(0.48f,0.9f,0);
+			path[5]=new idx3d_Vector(0.5f,0.9f,0);
+			path[6]=new idx3d_Vector(0.45f,0.6f,0);
+			path[7]=new idx3d_Vector(0.35f,0.3f,0);
+			path[8]=new idx3d_Vector(0.25f,0.2f,0);
+			path[9]=new idx3d_Vector(0.1f,0.15f,0);
+			path[10]=new idx3d_Vector(0.1f,0.0f,0);
+			path[11]=new idx3d_Vector(0.1f,-0.5f,0);
+			path[12]=new idx3d_Vector(0.35f,-0.55f,0);
+			path[13]=new idx3d_Vector(0.4f,-0.6f,0);
+			path[14]=new idx3d_Vector(0.0f,-0.6f,0);
+
+			scene.addObject("Wineglass",idx3d_ObjectFactory.ROTATIONOBJECT(path,16));
+			scene.object("Wineglass").rotate(0.5f,0f,0f);
+			scene.object("Wineglass").setMaterial(scene.material("Crystal"));
+			scene.object("Wineglass").removeDuplicateVertices();
+			
+		
+		
+		scene.defaultCamera.setFov(80);
+		scene.scale(0.88f);
+		
+		return viewer;
+	}
+}

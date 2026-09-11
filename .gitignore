@@ -1,0 +1,21 @@
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+nbproject/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / screenshots produced at runtime
+*.log
+Screenshot*.jpg

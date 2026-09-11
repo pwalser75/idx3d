@@ -1,0 +1,16 @@
+This folder contains idx3d, one of the first Java 3d engines.
+It consists of a library and several examples which were implemented as Java Applets back in the day.
+
+I want you to do the following:
+- initialize as GIT project
+- set up a Maven build and a README 
+- reorganize the code and migrate it to Java 17
+- migrate the Applets to other Swing classes
+
+Eventually I want this project to build an executable Java application (uber jar), which includes all the previous applets, with a split view:
+- left side: allow to chose a demo (on startup, demo1 is selected)
+- right side: run the selected demo
+
+For the GUI, I want to have a very modern, dark tech themed look, with a nice design (work with font sizes and styles and color and proper paddings to make it look very nice).
+
+Work out a plan on how to refactor this, and then start working on it.
